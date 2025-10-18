@@ -19,47 +19,47 @@ class _HomeScreensState extends State<HomeScreens> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: HeaderAppBar(), body: containerElements());
+    return Scaffold(
+      appBar: HeaderAppBar(),
+      body: containerElements(),
+      resizeToAvoidBottomInset: true,
+    );
   }
 
   AppBar HeaderAppBar() => AppBar(backgroundColor: Appcolor().background);
 
-  Container containerElements() {
-    return Container(
-      decoration: BoxDecoration(color: Appcolor().backgroundSecudary),
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(color: Appcolor().background),
-            child: Column(
-              children: [
-                Textcomponent(item: product, title: "Product"),
-                Textcomponent(item: cost, title: "Cost"),
-                SizedBox(height: 80),
-              ],
+  Stack containerElements() {
+    return Stack(
+      alignment: AlignmentGeometry.center,
+      children: [
+        Column(
+          children: [
+            Expanded(
+              child: Container(
+                color: Appcolor().background,
+                child: Column(
+                  children: [
+                    Textcomponent(item: product, title: "Product"),
+                    Textcomponent(item: cost, title: "Cost"),
+                  ],
+                ),
+              ),
             ),
-          ),
 
-          Buttomcomponent(product: product, cost: cost),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                color: Appcolor().backgroundSecudary,
+                child: Llistitems(),
+              ),
+            ),
+          ],
+        ),
 
-          Llistitems(),
-
-          // FutureBuilder(
-          //   future: _info,
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasError) {
-          //       return Text("${snapshot.error}");
-          //     } else if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return CircularProgressIndicator();
-          //     } else if (snapshot.hasData) {
-          //       return Text("${snapshot.data?.response}");
-          //     }
-
-          //     return Text("is not found");
-          //   },
-          // ),
-        ],
-      ),
+        Positioned(
+          child: Buttomcomponent(product: product, cost: cost),
+        ),
+      ],
     );
   }
 }

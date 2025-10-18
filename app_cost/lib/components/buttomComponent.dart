@@ -5,7 +5,7 @@ import 'package:app_cost/repository/response.dart';
 
 class Buttomcomponent extends StatefulWidget {
   final String product;
-  final String cost; 
+  final String cost;
 
   const Buttomcomponent({super.key, required this.product, required this.cost});
 
@@ -14,24 +14,21 @@ class Buttomcomponent extends StatefulWidget {
 }
 
 class _ButtomcomponentState extends State<Buttomcomponent> {
-
   Future<MethodPost?>? _info;
   ResponseApi _response = ResponseApi();
 
   @override
   Widget build(BuildContext context) {
-    return ContainerComponent(_info);
+    return buttomComponent(_info);
   }
 
-  Column ContainerComponent(Future? info) => Column(
-    children: [
-      FloatingActionButton(
-        backgroundColor: Appcolor().backgroudItem,
-        child: Icon(Icons.add, color: Appcolor().borderColor,),
-        onPressed: () {
-           info = _response.fetcheResponse(widget.product, widget.cost);
-        },
-      ),
-    ],
+  FloatingActionButton buttomComponent(Future? info) => FloatingActionButton(
+    backgroundColor: Appcolor().backgroudItem,
+    elevation: 10,
+
+    child: Icon(Icons.add, color: Appcolor().borderColor),
+    onPressed: () {
+      info = _response.fetcheResponse(widget.product, widget.cost);
+    },
   );
 }
