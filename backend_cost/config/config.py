@@ -1,7 +1,9 @@
 import os 
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 config = {
-    passwordb = **dotenv_values(".env.PASSWORDB"),
-    **os.environ
+    "passwordb":os.getenv("PASSWORDB"),
 }

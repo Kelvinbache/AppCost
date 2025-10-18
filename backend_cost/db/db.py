@@ -1,5 +1,5 @@
 import psycopg
-# from config.config import config
+from config.config import config
 
 #table secundary
 table_add_product = "CREATE TABLE product_cost (id_product SERIAL PRIMARY KEY, product VARCHAR(50) NOT NULL, cost DECIMAL(8,3) NOT NULL);"
@@ -21,7 +21,7 @@ async def connectionDB(product:str, cost:float):
         dbname="appCost",
         host="localhost",
         user="postgres",
-        password= "1234",
+        password= config['passwordb'],
         port="5432"
         )
     
