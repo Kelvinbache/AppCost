@@ -50,7 +50,7 @@ class _HomeScreensState extends State<HomeScreens> {
               child: Container(
                 width: double.infinity,
                 color: Appcolor().backgroundSecudary,
-                child: Llistitems(),
+                child: Llistitems(title: "History"),
               ),
             ),
           ],
