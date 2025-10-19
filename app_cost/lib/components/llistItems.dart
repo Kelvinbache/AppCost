@@ -3,6 +3,7 @@ import 'package:app_cost/core/AppColor.dart';
 import 'package:app_cost/core/AppFontStyle.dart';
 import 'package:app_cost/repository/method_get.dart';
 import 'package:app_cost/repository/response.dart';
+import 'package:app_cost/screens/listItems.dart';
 import 'package:flutter/material.dart';
 
 class Llistitems extends StatefulWidget {
@@ -57,10 +58,10 @@ class _LlistitemsState extends State<Llistitems> {
                 } else if (snapshot.hasData) {
 
                   //Aqui va un bucle que recorre todos los meses 
-                  return Buttomlistcomponent(title:"hello word");
+                  return Buttomlistcomponent(title:"hello word", address: "listItems");
                 }
 
-                  return Buttomlistcomponent(title:"hello word");
+                  return Buttomlistcomponent(title:"hello word", address: "listItems");
 
                 // return Text("null");
               },
