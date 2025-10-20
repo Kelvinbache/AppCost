@@ -57,7 +57,7 @@ class _HomeScreensState extends State<HomeScreens> {
         ),
 
         Positioned(
-          child: Buttomcomponent(product: product, cost: cost),
+          child: Buttomcomponent(product: "cafe", cost: "12.3"),
         ),
       ],
     );
