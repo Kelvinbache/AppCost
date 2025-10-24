@@ -12,4 +12,10 @@ async def consult_item():
     if(allitems.__sizeof__ == 0):
         return {"not is items"}
     
-    return {"item": allitems}
+    clone = allitems.copy()
+     
+    response = []   
+    for item in clone:
+        response.append({"product": item[0], "cost": float(item[1])}) 
+
+    return {"item": response}

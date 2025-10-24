@@ -4,7 +4,7 @@ class MethodGet {
   MethodGet({required this.response});
 
   factory MethodGet.FromJson(Map<String, dynamic> json) {
-    // final Map<String, dynamic> mapJson = json['hello'];
-    return MethodGet(response: json['hello']);
+    final Map<String, dynamic> mapJson = json['item'];
+    return MethodGet(response: mapJson['response']);
   }
 }

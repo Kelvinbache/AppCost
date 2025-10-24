@@ -99,7 +99,7 @@ async def insertTable(product:str, cost:float):
 
 async def allSelectItems():
     conn = None
-    selectAll = "SELECT * FROM product_cost"
+    selectAll = "SELECT product, cost FROM product_cost"
     
     try:
        
