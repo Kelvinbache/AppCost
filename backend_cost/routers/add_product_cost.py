@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from model.product_cost import Product
-# from db.db import connectionDB
+from db.db import insertTable
 
 
 router = APIRouter()
@@ -8,18 +8,14 @@ router = APIRouter()
 @router.post("/api/app_cost")
 async def add_product(items:Product):
      
-     return {"data": items.model_dump()}
-
-#    if (product.product.split() == " " or product.cost.split() == " "):
-#          raise HTTPException(status_code=404, detail="data not accepted")
-        
-#    else:
+   if (items.product.split() == " " or items.cost.split() == " "):
+         raise HTTPException(status_code=404, detail="data not accepted")
+   else:
     
-    # try:
-    #     # await connectionDB(product.product, product.cost)
-    #     # return {"datos enviados con exito"}
-    #     return {"data": product}
+     try:        
+        await insertTable(items.product, float(items.cost))
+        return {"datos enviados con exito"}
     
-    
-    # except Exception as ex: 
-    #        raise HTTPException(status_code=404, detail=ex)
+     except Exception as ex: 
+            raise HTTPException(status_code=404, detail=ex)
+     

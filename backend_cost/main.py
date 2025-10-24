@@ -1,13 +1,24 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from routers import consul, add_product_cost
-
+from db.db import initDB
 
 app=FastAPI()
+
+@app.on_event("startup")
+async def startup_event():
+    try:
+       init = await initDB()
+       print("Database initialized at startup: " + str(init))
+   
+    except Exception as e:
+        raise HTTPException(status_code=404, detail=f"Error during database initialization at startup: {e}")
 
 app.include_router(consul.router)
 app.include_router(add_product_cost.router)
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=8080, log_level="info", reload=True)
 
 
 # Cosas que necesito para hacer el backend:

@@ -2,7 +2,6 @@ import 'package:app_cost/components/buttomComponent.dart';
 import 'package:app_cost/components/llistItems.dart';
 import 'package:app_cost/components/textComponent.dart';
 import 'package:app_cost/core/AppColor.dart';
-import 'package:app_cost/repository/method_post.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreens extends StatefulWidget {
@@ -13,7 +12,6 @@ class HomeScreens extends StatefulWidget {
 }
 
 class _HomeScreensState extends State<HomeScreens> {
-  Future<MethodPost?>? _info;
   String product = "";
   String cost = "";
 

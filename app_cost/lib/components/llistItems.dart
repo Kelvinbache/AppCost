@@ -16,7 +16,7 @@ class Llistitems extends StatefulWidget {
 
 class _LlistitemsState extends State<Llistitems> {
   Future<MethodGet?>? _info = ResponseApi().fetcheResponseGet();
-
+  
   @override
   Widget build(BuildContext context) {
     return containerItems(_info);
@@ -25,7 +25,7 @@ class _LlistitemsState extends State<Llistitems> {
   Column containerItems(Future? _info) =>
       Column(children: [SizedBox(height: 100), containerItemsBorder(_info)]);
 
-  Container containerItemsBorder(Future<dynamic>? _info) {
+  Container containerItemsBorder(Future? info) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: Appcolor().borderColor, width: 1.0),
@@ -44,9 +44,10 @@ class _LlistitemsState extends State<Llistitems> {
             SizedBox(height: 10),
 
             FutureBuilder(
-              future: _info,
+              future: info,
 
               builder: (context, snapshot) {
+               
                 if (snapshot.hasError) {
 
                   return Text("error: ${snapshot.error}");
@@ -56,14 +57,13 @@ class _LlistitemsState extends State<Llistitems> {
                   return CircularProgressIndicator();
 
                 } else if (snapshot.hasData) {
+                  
+                  final MethodGet item = snapshot.data as MethodGet; 
 
-                  //Aqui va un bucle que recorre todos los meses 
-                  return Buttomlistcomponent(title:"hello word", address: "listItems");
+                  return Buttomlistcomponent(title:'${item.response}', address: "listItems");
                 }
 
-                  return Buttomlistcomponent(title:"hello word", address: "listItems");
-
-                // return Text("null");
+                  return Text("null");
               },
             ),
           ],
