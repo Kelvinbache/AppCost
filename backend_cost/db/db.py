@@ -13,14 +13,7 @@ async def connectionDB():
     conn = None
 
     try:
-        conn = psycopg.connect(
-        dbname=config['dbname'],
-        host=config['host'],
-        user=config['user'],
-        password= config['passwordb'],
-        port=config['port']
-        )
-    
+        conn = psycopg.connect(config["url_database"])
         print("connection is exit")    
         return conn
     
