@@ -14,11 +14,11 @@ async def connectionDB():
 
     try:
         conn = psycopg.connect(
-        dbname="appCost",
-        host="localhost",
-        user="postgres",
+        dbname=config['dbname'],
+        host=config['host'],
+        user=config['user'],
         password= config['passwordb'],
-        port="5432"
+        port=config['port']
         )
     
         print("connection is exit")    
