@@ -17,9 +17,6 @@ async def startup_event():
 app.include_router(consul.router)
 app.include_router(add_product_cost.router)
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", port=8080, log_level="info", reload=True)
-
 
 # Cosas que necesito para hacer el backend:
 # Modelo de respuesta y recoleccion

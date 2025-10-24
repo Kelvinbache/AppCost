@@ -60,7 +60,7 @@ class _LlistitemsState extends State<Llistitems> {
                   
                   final MethodGet item = snapshot.data as MethodGet; 
 
-                  return Buttomlistcomponent(title:'${item.response}', address: "listItems");
+                  return Buttomlistcomponent(title:'${item.product}', address: "listItems");
                 }
 
                   return Text("null");
